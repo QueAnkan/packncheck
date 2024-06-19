@@ -2,7 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
+
+  --background-color: #000;
+  --text-color: #F8F8CA;
+}
+
+@layer base {
+  p, h1, h2, h3, h4, h5, h6, * {
+    color:var(--text-color);
+  }
+}
+@layer components {
+  .bg-gradient {
+    background: linear-gradient(45deg, 
+    #FF3636 0%, 
+    #FEE157 12.5%, 
+    #FFFF55 25%, 
+    #F8F8CA 37.5%, 
+    #3FDC9A 50%, 
+    #49FFFF 62.5%, 
+    #3C3CFF 75%, 
+    #FF63FF 87.5%, 
+    #FFB5D8 100%);
+  }
+}
+
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -31,3 +59,4 @@ body {
     text-wrap: balance;
   }
 }
+ */
