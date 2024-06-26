@@ -10,11 +10,19 @@ type List = {
 const AddListsPage = () => {
     const [myLists, setMyLists] = useState<List[]>([]);
     const [newList, setNewList] = useState<List>({ title: "", checkItems: [] });
-
     const [newCheckItem, setNewCheckItem] = useState<string>("");
+
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        localStorage.setItem("myLists", JSON.stringify([...myLists, newList]));
+        const updatedLists = [...myLists, newList];
+        setMyLists(updatedLists);
+
+        const storedLists = JSON.parse(localStorage.getItem("myLists") || "[]");
+
+        const newStoredLists = [...storedLists, newList];
+        setMyLists(myLists.concat(newList));
+        localStorage.setItem("myLists", JSON.stringify(newStoredLists));
     };
 
     const handleAddItem = () => {
@@ -28,7 +36,7 @@ const AddListsPage = () => {
         });
         setNewList((prevList) => ({
             ...prevList,
-            checkItems: ["", ...prevList.checkItems.slice(1)],
+            checkItems: [...prevList.checkItems.slice(1)],
         }));
         setNewCheckItem("");
     };
@@ -43,7 +51,7 @@ const AddListsPage = () => {
             >
                 <div className='flex items-end'>
                     <label htmlFor='ListName' className='flex flex-col'>
-                        Lägg till namn på listan
+                        Lägg till Titel för listan
                         <input
                             id='ListName'
                             type='text'
@@ -71,9 +79,20 @@ const AddListsPage = () => {
                 </div>
                 <div>
                     <h3>Titel: {newList.title}</h3>
-                    <ul>
+                    <ul className=''>
                         {newList.checkItems.map((list, index: number) => {
-                            return <li key={index}>{list}</li>;
+                            return (
+                                <li key={index}>
+                                    <div className='flex'>
+                                        <input
+                                            type='checkbox'
+                                            id='checkItem'
+                                            name='checkItem'
+                                        ></input>
+                                        <p>{list}</p>
+                                    </div>
+                                </li>
+                            );
                         })}
                     </ul>
                 </div>
