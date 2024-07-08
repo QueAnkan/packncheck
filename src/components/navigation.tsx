@@ -1,32 +1,37 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navigation = () => {
     return (
-        <nav className='  w-screen flex flex-col fixed bottom-0 lg:top-0 '>
+        <div className='  w-screen flex flex-col fixed bottom-0 lg:top-0 '>
             <span className='w-full h-px bg-gradient lg:hidden'></span>
             <ul className='flex gap-4 mx-auto py-4'>
-                <li className='flex flex-col items-center'>
-                    <Image
-                        src='/solar_checklist-minimalistic-linear.svg'
-                        alt=''
-                        width={40}
-                        height={40}
-                    ></Image>
-                    <h3>Mina Listor</h3>
-                </li>
-                <li className='flex flex-col items-center'>
-                    <Image
-                        src='/solar_checklist-minimalistic-linear.svg'
-                        alt=''
-                        width={40}
-                        height={40}
-                    ></Image>
-                    <h3>Ny lista</h3>
-                </li>
+                <Link href='/see-all-lists'>
+                    <li className='flex flex-col items-center'>
+                        <Image
+                            src='/solar_checklist-minimalistic-linear.svg'
+                            alt=''
+                            width={40}
+                            height={40}
+                        ></Image>
+                        <h3>Mina Listor</h3>
+                    </li>
+                </Link>
+                <Link href='/add-lists'>
+                    <li className='flex flex-col items-center'>
+                        <Image
+                            src='/solar_checklist-minimalistic-linear.svg'
+                            alt=''
+                            width={40}
+                            height={40}
+                        ></Image>
+                        <h3>Ny lista</h3>
+                    </li>
+                </Link>
             </ul>
             <span className='w-full h-px bg-gradient hidden lg:block'></span>
-        </nav>
+        </div>
     );
 };
 

@@ -13,10 +13,11 @@
   p, h1, h2, h3, h4, h5, h6, * {
     color:var(--text-color);
   }
+  
 }
 @layer components {
   .bg-gradient {
-    background: linear-gradient(45deg, 
+    background: linear-gradient(-45deg, 
     #FF3636 0%, 
     #FEE157 12.5%, 
     #FFFF55 25%, 
