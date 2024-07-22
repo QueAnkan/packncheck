@@ -87,15 +87,7 @@ const AddListsPage = () => {
                                 className='w-3/4 rounded-md bg-[#F8F8CA] text-black'
                             />
                         </label>
-                        {/*  <button className=' border border-white' type='button'>
-                        <Image
-                            alt='Lägg till namn på listan'
-                            src='/typcn_plus.svg'
-                            width={20}
-                            height={20}
-                        ></Image>
-                    </button>
-                    {/* disabled när fältet är ifyllt */}
+                       
                     </div>
 
                     <div className='flex items-end'>
@@ -172,3 +164,6 @@ const AddListsPage = () => {
 };
 
 export default AddListsPage;
+
+
+// TODO remove items from list
