@@ -6,13 +6,15 @@ const SeeAllLists = () => {
     const [lists, setLists] = useState([]);
     const [isOpen, setIsOpen] = useState<null | number>(null);
 
+    const visibleClass = isOpen !== null ? "visible" : "hidden";
+
     const storedLists = JSON.parse(localStorage.getItem("myLists") || "[]");
     console.log(storedLists);
 
     return (
-        <div className=' h-screen flex flex-col justify-center items-center gap-y-8 border border-green-400 '>
+        <div className=' h-screen flex flex-col justify-start items-center gap-y-8 py-8 '>
             <h1 className='text-3xl'>See All Lists</h1>
-            <ul className='flex flex-wrap justify-evenly gap-y-8 border border-red-800'>
+            <ul className='flex flex-wrap justify-evenly gap-y-8 '>
                 {storedLists.map(
                     (
                         list: { title: string; checkItems: string[] },
@@ -24,7 +26,7 @@ const SeeAllLists = () => {
                             key={index}
                         >
                             <div
-                                className='cursor-pointer w-full h-fit py-2 px-4 rounded-3xl z-10 bg-pink-700'
+                                className='cursor-pointer w-full h-fit py-2 px-4 rounded-3xl z-10'
                                 onClick={() =>
                                     setIsOpen(isOpen === index ? null : index)
                                 }
@@ -33,10 +35,10 @@ const SeeAllLists = () => {
                                     {list.title}
                                 </h2>
                             </div>
-                            <div className='absolute w-full left-0 bg-black'>
-                                <div className='z-50  bg-green-400 w-full h-fit border border-white py-2 px-4 rounded-3xl '>
+                            <div className='absolute w-full left-0  bg-black rounded-3xl  z-50'>
+                                <div className={`${visibleClass}`}>
                                     {isOpen === index && (
-                                        <ul>
+                                        <ul className='w-full h-fit border border-white py-2 px-4 rounded-3xl min-h-60'>
                                             {list.checkItems.map(
                                                 (
                                                     item: string,
@@ -44,7 +46,7 @@ const SeeAllLists = () => {
                                                 ) => (
                                                     <li
                                                         key={index}
-                                                        className='flex gap-4'
+                                                        className='flex gap-4 pb-4'
                                                     >
                                                         <input
                                                             type='checkbox'

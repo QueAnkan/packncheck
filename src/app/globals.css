@@ -12,6 +12,7 @@
 @layer base {
   * {
     color:var(--text-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
 }
@@ -27,8 +28,15 @@
     #3C3CFF 75%, 
     #FF63FF 87.5%, 
     #FFB5D8 100%);
+  };
+
+  .name {
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+color: #FF63FF;
   }
 }
+
+
 
 
 /* :root {

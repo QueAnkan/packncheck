@@ -61,12 +61,12 @@ const AddListsPage = () => {
     };
 
     return (
-        <div className='h-screen flex flex-col items-center gap-4 p-8'>
+        <div className='h-full flex flex-col items-center gap-4 p-8'>
             <h1 className="text-3xl">Skapa ny lista</h1>
             <form
                 action='/'
                 onSubmit={handleSubmit}
-                className='relative flex flex-col justify-start gap-y-10 border rounded-sm w-full h-5/6 mx-auto p-4'
+                className='relative flex flex-col justify-start gap-y-10 border rounded-sm w-full h-full mx-auto p-4'
             >
                 <div className='flex flex-col gap-y-8'>
                     <div className='flex items-end'>
