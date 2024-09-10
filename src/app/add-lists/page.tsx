@@ -24,8 +24,12 @@ const AddListsPage = () => {
         }, 3000);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
         event.preventDefault();
+        console.log("click");
+
         if (!newList.title || !newList.checkItems.length) {
             return;
         } else {
@@ -60,18 +64,28 @@ const AddListsPage = () => {
         setNewCheckItem("");
     };
 
+    const handleDeleteItem = (index: number) => {
+        setNewList({
+            ...newList,
+            checkItems: [
+                ...newList.checkItems.slice(0, index),
+                ...newList.checkItems.slice(index + 1),
+            ],
+        });
+    }
+
     return (
         <div className='h-full flex flex-col items-center gap-4 p-8'>
-            <h1 className="text-3xl">Skapa ny lista</h1>
+            <h1 className='text-3xl'>Skapa ny lista</h1>
             <form
                 action='/'
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
                 className='relative flex flex-col justify-start gap-y-10 border rounded-sm w-full h-full mx-auto p-4'
             >
                 <div className='flex flex-col gap-y-8'>
-                    <div className='flex items-end'>
-                        <label htmlFor='ListName' className='flex flex-col'>
-                            Lägg till titel
+                    <div className='flex items-center'>
+                        <label htmlFor='ListName' className='flex flex-col w-3/5'>
+                            Titel
                             <input
                                 id='ListName'
                                 type='text'
@@ -84,15 +98,14 @@ const AddListsPage = () => {
                                         title: event.target.value,
                                     })
                                 }
-                                className='w-3/4 rounded-md bg-[#F8F8CA] text-black'
+                                className='rounded-md bg-[#F8F8CA] text-black'
                             />
                         </label>
-                       
                     </div>
 
-                    <div className='flex items-end'>
-                        <label htmlFor='checkItem' className='flex flex-col'>
-                            Lägg till uppgift
+                    <div className='flex items-end justify-start gap-1'>
+                        <label htmlFor='checkItem' className='flex flex-col w-3/5'>
+                            Ny uppgift
                             <input
                                 id='checkItem'
                                 type='text'
@@ -100,10 +113,10 @@ const AddListsPage = () => {
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setNewCheckItem(event.target.value)}
-                                className='w-3/4 rounded-md bg-[#F8F8CA] text-black'
+                                className=' rounded-md bg-[#F8F8CA] text-black'
                             />
                         </label>
-                        <button
+                        <button className=" flex items-center gap-x-0.5"
                             disabled={!newCheckItem}
                             onClick={handleAddItem}
                             type='button'
@@ -111,11 +124,24 @@ const AddListsPage = () => {
                             <Image
                                 alt='Lägg till namn på listan'
                                 src='/typcn_plus.svg'
-                                width={20}
-                                height={20}
+                                width={10}
+                                height={10}
                             ></Image>
+                            <p className="text-nowrap text-sm">Lägg till</p>
                         </button>
                     </div>
+                </div>
+
+                <div className=' w-full h-0 bottom-12 left-0 flex  flex-col items-end overflow-visible'>
+                    <button
+                        type='submit'
+                        className='text-black font-bold bg-gradient w-fit px-4 py-1 rounded-3xl '
+                        onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                            handleSubmit(event)
+                        }
+                    >
+                        Spara lista
+                    </button>
                 </div>
                 <div className='flex flex-col items-start'>
                     <h2 className=''> {newList.title}</h2>
@@ -134,7 +160,10 @@ const AddListsPage = () => {
                                         ></input>
                                         <p>{listItem}</p>
                                     </div>
-                                    <button className='justify-self-end'>
+                                    <button
+                                        className='justify-self-end'
+                                        onClick={() =>handleDeleteItem(index)}
+                                    >
                                         <Image
                                             alt='Ta bort uppgift'
                                             src='/bytesize_trash.svg'
@@ -147,23 +176,14 @@ const AddListsPage = () => {
                         })}
                     </ul>
                 </div>
-                <div className="absolute w-full h-0 bottom-12 left-0 flex  flex-col items-center overflow-visible">
-                    <button
-                        type='submit'
-                        className='text-black font-bold bg-gradient w-fit px-4 py-1 rounded-3xl '
-                    >
-                        Spara lista
-                    </button>
-                </div>
-            </form>
+
             <div className={`${messageClasses}`}>
-                <div className=''>{isSaved && <p>Listan är sparad</p>}</div>
+                <div className='bg-black px-8 py-12 rounded-sm'>{isSaved && <p>Listan är sparad</p>}</div>
             </div>
+            </form>
         </div>
     );
 };
 
 export default AddListsPage;
 
-
-// TODO remove items from list
