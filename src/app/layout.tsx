@@ -21,7 +21,7 @@ export default function RootLayout({
         <html lang='en'>
             <body className='min-h-screen relative flex flex-col bg-black'>
                 <Header/>
-                <div className='min-h-full'>{children}</div>
+                <div className='min-h-full xl:mt-16'>{children}</div>
                 <Navigation />
             </body>
         </html>
