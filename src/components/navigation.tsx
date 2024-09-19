@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navigation = () => {
     return (
-        <div className='  w-screen flex flex-col fixed bottom-0 lg:top-0 '>
+        <div className='  w-screen flex flex-col fixed bottom-0 lg:top-0'>
             <span className='w-full h-px bg-gradient lg:hidden'></span>
             <ul className='flex gap-4 mx-auto py-4'>
                 <Link href='/see-all-lists'>

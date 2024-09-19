@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 :root {
 
@@ -14,7 +14,11 @@
     color:var(--text-color);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
-  
+  .app-name  {
+    font-family: "Irish Grover", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
 }
 @layer components {
  /*  .bg-gradient {
@@ -43,10 +47,11 @@
     opacity: 0.5;
   }; */
 
-  .name {
+/*   {
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 color: #FF63FF;
-  }
+  } */
+  
 }
 
 
