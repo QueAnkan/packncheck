@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navigation = () => {
     return (
-        <div className='  w-screen flex flex-col fixed bottom-0 lg:absolute lg:top-0 lg:p-8 lg:h-fit'>
+        <div className='  w-full flex flex-col'>
             <span className='w-full h-px bg-gradient lg:hidden'></span>
             <ul className='flex gap-4 mx-auto py-4 lg:gap-16'>
                 <Link href='/see-all-lists'>
@@ -30,7 +30,7 @@ const Navigation = () => {
                     </li>
                 </Link>
             </ul>
-            <span className='w-full h-px bg-gradient hidden lg:block'></span>
+           {/*  <span className='w-full h-px bg-gradient hidden lg:block'></span> */}
         </div>
     );
 };

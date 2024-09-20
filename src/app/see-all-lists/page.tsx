@@ -34,7 +34,7 @@ const SeeAllLists = () => {
             : "flex flex-wrap gap-8 justify-center";
 
     return (
-        <div className=' h-screen w-screen mx-auto flex flex-col justify-start items-center gap-y-16 py-8'>
+        <div className=' h-screen w-full mx-auto flex flex-col justify-start items-center gap-y-16 py-8'>
             <h1 className='text-3xl'>Välj lista</h1>
             <div className='max-w-3/4 mx-auto xl:max-w-[1024px] flex justify-center'>
                 <ul className={`${gridClass}`}>
