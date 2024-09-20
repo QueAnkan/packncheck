@@ -1,5 +1,5 @@
 import React from "react";
-import { irishGrover } from "../app/layout";
+import { irishGrover } from "../app/fonts";
 import Link from "next/link";
 import Navigation from "./ListLinks";
 
