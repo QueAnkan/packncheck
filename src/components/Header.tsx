@@ -1,7 +1,7 @@
 import React from "react";
 import { irishGrover } from "../app/layout";
 import Link from "next/link";
-import Navigation from "./Navigation";
+import Navigation from "./ListLinks";
 
 const Header = () => {
     return (
