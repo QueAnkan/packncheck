@@ -13,9 +13,9 @@ const AddListsPage = () => {
     const [newCheckItem, setNewCheckItem] = useState<string>("");
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
-    const messageClasses =
-        isSaved &&
-        "absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl";
+    const messageClasses = isSaved
+        ? "absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 text-white text-2xl"
+        : "hidden";
 
     const disabledButton =
         !newList.title || !newList.checkItems.length
@@ -26,7 +26,7 @@ const AddListsPage = () => {
         setIsSaved(true);
         setTimeout(() => {
             setIsSaved(false);
-        }, 500);
+        }, 1000);
     };
 
     const handleSubmit = (
@@ -84,9 +84,9 @@ const AddListsPage = () => {
     };
 
     return (
-        <div className='h-full flex flex-col items-center gap-4 p-8'>
+        <div className='h-full flex flex-col items-center gap-8 p-8 lg:h-screen'>
             <h1 className='text-3xl'>Skapa ny lista</h1>
-            <div className="bg-gradient p-px">
+            <div className='bg-gradient min-h-fit p-px m-px'>
                 <form
                     action='/'
                     className='relative flex flex-col justify-start gap-y-10 bg-black rounded-sm w-full h-full mx-auto p-4'
@@ -148,17 +148,6 @@ const AddListsPage = () => {
                         </div>
                     </div>
 
-                    <div className=' w-full h-0 bottom-12 left-0 flex  flex-col items-end overflow-visible'>
-                        <button
-                            type='submit'
-                            className={`${disabledButton}`}
-                            onClick={(
-                                event: React.MouseEvent<HTMLButtonElement>
-                            ) => handleSubmit(event)}
-                        >
-                            Spara lista
-                        </button>
-                    </div>
                     <div className='flex flex-col items-start'>
                         <h2 className=''> {newList.title}</h2>
                         <ul className='w-full'>
@@ -199,10 +188,23 @@ const AddListsPage = () => {
                             )}
                         </ul>
                     </div>
+                    <div className=' w-full h-fit  left-0 flex  flex-col items-end overflow-visible'>
+                        <button
+                            type='submit'
+                            className={`${disabledButton}`}
+                            onClick={(
+                                event: React.MouseEvent<HTMLButtonElement>
+                            ) => handleSubmit(event)}
+                        >
+                            Spara lista
+                        </button>
+                    </div>
 
                     <div className={`${messageClasses}`}>
-                        <div className='bg-black px-8 py-12 rounded-sm'>
-                            {isSaved && <p>Listan är sparad</p>}
+                        <div className='bg-gradient min-h-fit p-px m-px'>
+                            <div className='bg-black w-72 h-14 px-8 py-12 rounded-sm flex justify-center items-center'>
+                                {isSaved && <p>Listan är sparad</p>}
+                            </div>
                         </div>
                     </div>
                 </form>
