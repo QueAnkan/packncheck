@@ -1,7 +1,7 @@
 "use client";
 
 // TODO: fix handleDeleteList function
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const SeeAllLists = () => {
@@ -12,14 +12,13 @@ const SeeAllLists = () => {
     const visibleClass =
         isOpen !== null ? "visible bg-gradient p-0.5 rounded-3xl" : "hidden";
 
-    const storedLists = JSON.parse(localStorage.getItem("myLists") || "[]");
-    console.log(storedLists);
-
+     useEffect(() =>{
+        
+        const storedLists = JSON.parse(localStorage.getItem("myLists") || "[]");
+        setLists(storedLists);},[]) 
+   
     const handleDeleteList = (index: number) => {
-        console.log("click", index, isOpen);
-
-        const updatedLists = [...storedLists];
-
+         const updatedLists = [...lists];
         updatedLists.splice(index, 1);
         localStorage.setItem("myLists", JSON.stringify(updatedLists));
         setLists(updatedLists);
@@ -29,7 +28,7 @@ const SeeAllLists = () => {
         setIsOpen(null);
     };
     const gridClass =
-        storedLists.length > 2
+        lists.length > 2
             ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
             : "flex flex-wrap gap-8 justify-center";
 
@@ -38,7 +37,7 @@ const SeeAllLists = () => {
             <h1 className='text-3xl'>Välj lista</h1>
             <div className='max-w-3/4 mx-auto xl:max-w-[1024px] flex justify-center'>
                 <ul className={`${gridClass}`}>
-                    {storedLists.map(
+                    {lists.map(
                         (
                             list: { title: string; checkItems: string[] },
 
